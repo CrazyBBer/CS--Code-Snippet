@@ -11,6 +11,7 @@ namespace MutexSample
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
 
@@ -18,29 +19,26 @@ namespace MutexSample
                 (GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(GuidAttribute));
             var guidkey = string.Format("DemoSet-{0}", guitattr.Value);
 
-            Console.WriteLine("Assembly guid:{0}",guidkey);
+            Console.WriteLine("Assembly guid:{0}", guidkey);
             var _mutex = new Mutex(true, guidkey);
-            
-
-                try
-                {
-                    _mutex.WaitOne(TimeSpan.FromMilliseconds(3000), true);
-                  
-                }
-                catch (AbandonedMutexException ex)
-                {
-                    if (ex.Mutex != null)
-                    {
-                        ex.Mutex.ReleaseMutex();
-                    }
-                    Console.WriteLine("exist a running a program");
-                    throw;
-                }
 
 
-            
-            Console.WriteLine(" a running a program");
+            try
+            {
+                _mutex.WaitOne(TimeSpan.FromSeconds(1), true);
+
+            }
+            catch (AbandonedMutexException ex)
+            {
+                if (ex.Mutex != null)
+                    ex.Mutex.ReleaseMutex();
+
+                Console.WriteLine("exist a running a program");
+                //throw;
+            }
+            Console.WriteLine(" program end");
             Console.ReadKey();
+            _mutex.ReleaseMutex();
         }
     }
 }

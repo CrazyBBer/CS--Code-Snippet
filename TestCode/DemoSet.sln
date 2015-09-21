@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeSample", "TestCode\AttributeSample.csproj", "{0E0A0099-9807-4E0E-81F0-B085D0E26805}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutexSample", "MutexSample\MutexSample.csproj", "{9E64A268-2B00-4EEA-ACBE-32B105DC1664}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoticeMessageLoop", "NoticeMessageLoop\NoticeMessageLoop.csproj", "{77547982-000D-401E-8327-F9569612F43F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9E64A268-2B00-4EEA-ACBE-32B105DC1664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E64A268-2B00-4EEA-ACBE-32B105DC1664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E64A268-2B00-4EEA-ACBE-32B105DC1664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77547982-000D-401E-8327-F9569612F43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77547982-000D-401E-8327-F9569612F43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77547982-000D-401E-8327-F9569612F43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77547982-000D-401E-8327-F9569612F43F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
