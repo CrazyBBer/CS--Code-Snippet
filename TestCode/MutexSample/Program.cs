@@ -15,17 +15,21 @@ namespace MutexSample
         static void Main(string[] args)
         {
 
-            var guitattr =
-                (GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(GuidAttribute));
-            var guidkey = string.Format("DemoSet-{0}", guitattr.Value);
-
+            var guidkey = getAssemblyguid();
             Console.WriteLine("Assembly guid:{0}", guidkey);
             var _mutex = new Mutex(true, guidkey);
-
-
             try
             {
-                _mutex.WaitOne(TimeSpan.FromSeconds(1), true);
+
+                if (_mutex.WaitOne(TimeSpan.FromSeconds(0), true))
+                {
+                    _mutex.ReleaseMutex();
+                    Console.WriteLine("start app ok");
+                }
+                else
+                {
+                    Console.WriteLine("exist a running a program");
+                }
 
             }
             catch (AbandonedMutexException ex)
@@ -33,12 +37,20 @@ namespace MutexSample
                 if (ex.Mutex != null)
                     ex.Mutex.ReleaseMutex();
 
-                Console.WriteLine("exist a running a program");
+                Console.WriteLine("release ok,and will start a running a program");
                 //throw;
             }
             Console.WriteLine(" program end");
             Console.ReadKey();
-            _mutex.ReleaseMutex();
+
+        }
+
+        static string getAssemblyguid()
+        {
+
+            var guitattr =
+                (GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(GuidAttribute));
+            return string.Format("DemoSet-{0}", guitattr.Value);
         }
     }
 }
