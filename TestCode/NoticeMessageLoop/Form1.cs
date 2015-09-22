@@ -20,7 +20,7 @@ namespace NoticeMessageLoop
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg== Win32Api.WM_SHOWME)
+            if (m.Msg == Win32Api.WmShowme)
             {
                 ShowMe();
             }
@@ -29,6 +29,13 @@ namespace NoticeMessageLoop
 
         private void ShowMe()
         {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            var top = this.TopMost;
+            TopMost = true;
+            TopMost = top;
 
         }
     }

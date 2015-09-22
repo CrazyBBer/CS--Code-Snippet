@@ -7,13 +7,13 @@ using System.Runtime.InteropServices;
 
 namespace NoticeMessageLoop
 {
-    class Win32Api
+    public class Win32Api
     {
-        public const int HWND_BROADCAST = 0xffff;
-        public static readonly int WM_SHOWME = RegisterWindowMessage("WM_SHOWME");
+        public const int HwndBroadcast = 0xffff;
+        public static readonly  int WmShowme = RegisterWindowMessage("WM_SHOWME");
 
         [DllImport("user32.dll")]
-        public static extern bool PostMessage(IntPtr hwnd,int msg,IntPtr wparam,IntPtr lparam);
+        public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
 
         [DllImport("user32.dll")]
         public static extern bool SendMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
